@@ -1,0 +1,34 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.backends"
+
+[project]
+name = "voicehand"
+version = "0.1.0"
+description = "Voice Computer Control - hands-free OS interaction via voice commands"
+authors = [{ name = "Mukunda Katta" }]
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0",
+    "click>=8.0",
+    "rich>=13.0",
+    "speechrecognition>=3.10",
+    "pyaudio>=0.2.13",
+    "pyautogui>=0.9.54",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+]
+
+[project.scripts]
+voicehand = "voicehand.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/voicehand"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
